@@ -676,7 +676,7 @@ footer{padding-bottom:32px!important}
     <a class="brand" href="#top"><b>The Attractiveness <i>Project</i></b><span>with Sanaya</span></a>
     <nav class="nav-links">
       <a class="t" href="#sanaya">Meet Sanaya</a>
-      <a class="btn" href="#reserve">Join<span class="ys"> the Project</span></a>
+      <a class="btn" href="#reserve" id="navJoinBtn">Join<span class="ys"> the Project</span></a>
     </nav>
   </div>
 </header>
@@ -1042,16 +1042,19 @@ document.querySelectorAll('.tk-h').forEach(function(b){b.addEventListener('click
   // with the actual clickable <a type="submit"> nested inside it — the click
   // listener lives on that inner anchor, not the wrapper, so we must target
   // and click the anchor itself for the checkout to actually open.
-  var btn = document.getElementById('joinProjectBtn');
-  if (!btn) return;
-  btn.addEventListener('click', function(e){
-    var rzpBtn = document.querySelector('#rzpHiddenForm a[type="submit"]') || document.querySelector('#rzpHiddenForm a');
-    if (rzpBtn) {
-      e.preventDefault();
-      rzpBtn.click();
-    }
-    // If Razorpay's script hasn't finished loading yet, fall through to the
-    // href="#reserve" default so the click still does *something* useful.
+  var btnIds = ['joinProjectBtn', 'navJoinBtn'];
+  btnIds.forEach(function(id){
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    btn.addEventListener('click', function(e){
+      var rzpBtn = document.querySelector('#rzpHiddenForm a[type="submit"]') || document.querySelector('#rzpHiddenForm a');
+      if (rzpBtn) {
+        e.preventDefault();
+        rzpBtn.click();
+      }
+      // If Razorpay's script hasn't finished loading yet, fall through to the
+      // href="#reserve" default so the click still does *something* useful.
+    });
   });
 })();
 </script>
