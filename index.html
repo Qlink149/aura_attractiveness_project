@@ -695,7 +695,7 @@ footer{padding-bottom:32px!important}
     </div>
     <p class="sub rv d2"><span class="nw">Awaken your <b>glow</b>.</span> <span class="nw">Own your <b>magnetism</b>.</span> <span class="nw">Receive like a <b>goddess</b>.</span></p>
     <div class="cta-row rv d4">
-      <a class="btn glow" href="#reserve">Join the Project <span class="arr">→</span></a>
+      <a class="btn glow" href="#reserve" id="midJoinBtn1">Join the Project <span class="arr">→</span></a>
     </div>
     <div class="cd" data-cd aria-label="Countdown to 22 November 2026, 3 PM IST">
       <div><b data-d>00</b><span>Days</span></div><div><b data-h>00</b><span>Hrs</span></div><div><b data-m>00</b><span>Min</span></div><div><b data-s>00</b><span>Sec</span></div>
@@ -812,7 +812,7 @@ footer{padding-bottom:32px!important}
       </div>
     </div>
     <div class="pay rv">
-      <a class="btn glow" href="#reserve">Join the Project <span class="arr">→</span></a>
+      <a class="btn glow" href="#reserve" id="midJoinBtn2">Join the Project <span class="arr">→</span></a>
       <div class="pay-meta">22 November 2026 · 3 PM IST · Live online</div>
     </div>
   </div>
@@ -901,7 +901,7 @@ footer{padding-bottom:32px!important}
         </ul>
         
         <div class="j-buy">
-          <button type="button" class="btn glow j-add">Add the Journal <span class="arr">→</span></button>
+          <button type="button" class="btn glow j-add" id="journalAddBtn">Add the Journal <span class="arr">→</span></button>
           <p class="j-fine">₹1,499 · Incl. delivery · Limited stock · Prepaid only, no returns</p>
         </div>
       </div>
@@ -1042,7 +1042,7 @@ document.querySelectorAll('.tk-h').forEach(function(b){b.addEventListener('click
   // with the actual clickable <a type="submit"> nested inside it — the click
   // listener lives on that inner anchor, not the wrapper, so we must target
   // and click the anchor itself for the checkout to actually open.
-  var btnIds = ['joinProjectBtn', 'navJoinBtn'];
+  var btnIds = ['joinProjectBtn', 'navJoinBtn', 'midJoinBtn1', 'midJoinBtn2', 'journalAddBtn'];
   btnIds.forEach(function(id){
     var btn = document.getElementById(id);
     if (!btn) return;
