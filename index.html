@@ -875,7 +875,7 @@ footer{padding-bottom:32px!important}
     </div>
     <p class="line rv d2">Awaken your <b>glow</b>. Own your <b>magnetism</b>. Receive like a <b>goddess</b>.</p>
     <a class="btn glow rv d3" href="#reserve" id="joinProjectBtn">Join the Project <span class="arr">→</span></a>
-    <form id="rzpHiddenForm" style="display:none"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Tu7goceBDqysO1" async> </script></form>
+    <form id="rzpHiddenForm" style="position:absolute;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;clip:rect(0,0,0,0)"><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Tu7goceBDqysO1" async> </script></form>
     <div class="cd rv d4" data-cd aria-label="Countdown to 22 November 2026, 3 PM IST">
       <div><b data-d>00</b><span>Days</span></div><div><b data-h>00</b><span>Hrs</span></div><div><b data-m>00</b><span>Min</span></div><div><b data-s>00</b><span>Sec</span></div>
     </div>
@@ -1038,14 +1038,14 @@ document.querySelectorAll('.tk-h').forEach(function(b){b.addEventListener('click
 <script>(function(){var v=document.querySelector("#jvid video");if(v&&v.getAttribute("src")){document.getElementById("jvid").hidden=false}})();</script>
 <script>
 (function(){
-  // The real Razorpay button renders as a hidden <span class="razorpay-payment-button">
-  // inside #rzpHiddenForm once its script loads. Clicking our own styled
-  // "Join the Project" button finds that element and forwards a real click to
-  // it, so the actual checkout opens while only our own design is visible.
+  // Razorpay renders an outer <span class="razorpay-payment-button"> wrapper
+  // with the actual clickable <a type="submit"> nested inside it — the click
+  // listener lives on that inner anchor, not the wrapper, so we must target
+  // and click the anchor itself for the checkout to actually open.
   var btn = document.getElementById('joinProjectBtn');
   if (!btn) return;
   btn.addEventListener('click', function(e){
-    var rzpBtn = document.querySelector('#rzpHiddenForm .razorpay-payment-button');
+    var rzpBtn = document.querySelector('#rzpHiddenForm a[type="submit"]') || document.querySelector('#rzpHiddenForm a');
     if (rzpBtn) {
       e.preventDefault();
       rzpBtn.click();
